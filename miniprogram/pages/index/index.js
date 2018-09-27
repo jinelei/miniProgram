@@ -1,7 +1,13 @@
 // miniprogram/pages/index/index.js
+// import {
+//   utils
+// } from '../../utils/index.js'
 import {
-  authRoute
-} from '../../utils/routers/authRouter.js'
+  pages
+} from '../../utils/pages.js'
+// const pages = require('../../utils/pages.js')
+
+
 Page({
 
   /**
@@ -15,13 +21,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(pages)
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
+    wx.showLoading({
+      title: '正在检查用户权限',
+    })
 
     // 调用云函数
     wx.cloud.callFunction({
@@ -39,14 +43,27 @@ Page({
             title: '欢迎回来',
             icon: 'none',
           })
-          authRoute(res.result.data[0].auth);
+          // authRoute(res.result.data[0].auth);
+          // wx.navigateTo({
+          //   url: utils.pages.deployFunctions,
+          // })
         }
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
-
+        wx.showToast({
+          title: '检查权限失败',
+          icon: 'none',
+        })
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
   },
 
   /**
