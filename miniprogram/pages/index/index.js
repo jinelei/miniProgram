@@ -6,7 +6,7 @@ import {
   pages
 } from '../../utils/pages.js'
 // const pages = require('../../utils/pages.js')
-
+var WxParse = require('../../thirdpart/wxParse/wxParse.js');
 
 Page({
 
@@ -14,7 +14,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    originMarkdown:'',
+    originHtml: '',
   },
 
   /**
@@ -106,5 +107,27 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+
+  markdownEditorInputFunc: function(e) {
+    // console.log('out markdownEditorInputFunc')a s d
+    // console.log(e.detail)
+
+    this.setData({
+      originMarkdown: e.detail
+    })
+
+    const that = this; 
+    WxParse.wxParse('originHtml', 'md', e.detail, that, 5);
+    
+
+  },
+
+  markdownEditorConfirmFunc: function(e) {
+    // console.log('out markdownEditorConfirmFunc')
+    // console.log(e.detail)
+    this.setData({
+      originMarkdown: e.detail
+    })
   }
 })

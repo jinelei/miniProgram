@@ -1,0 +1,4 @@
+<!--components/markdownEditor.wxml-->
+<view class='markdownEditorContainer'>
+  <textarea placeholder-class='markdownEditorPlaceHolder' placeholder='请输入markdown' cursor-spacing='1' show-confirm-bar='true' bindinput='_markdownEditorInputFunc' bindconfirm='_markdownEditorConfirmFunc'></textarea>
+</view>

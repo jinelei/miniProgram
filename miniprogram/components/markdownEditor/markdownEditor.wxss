@@ -1,0 +1,14 @@
+/* components/markdownEditor.wxss */
+
+.markdownEditorContainer {
+  display: flex;
+  display: -webkit-flex;
+  margin: auto;
+  width: 99%;
+  height: 100%;
+  border: 1px #cccccc solid;
+}
+
+.markdownEditorPlaceHolder {
+  color: gray;
+}

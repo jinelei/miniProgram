@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "/thirdpart/wxParse/wxParse.wxss";
+
 .container {
   display: flex;
   flex-direction: column;
